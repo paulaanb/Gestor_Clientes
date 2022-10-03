@@ -1,8 +1,12 @@
 # Gestor de clientes en Python para Ingeniería
 
-Repositorio del proyecto completo del curso de Python.
 
-El grupo está formado por Paula Naranjo, Ana López y Andrea Manuel. Hemos realizado un proyecto de gestor de clientes donde incluye:
+El grupo está formado por Paula Naranjo, Ana López y Andrea Manuel. 
+
+Nuestra dirección de GitHub para este repositorio es la siguiente: [GitHub](https://github.com/paulaanb/Gestor_Clientes.git)
+https://github.com/paulaanb/Gestor_Clientes.git
+
+Hemos realizado un proyecto de gestor de clientes donde incluye:
 ·Listar los clientes del gestor.
 
 ·Consultar un cliente a partir del dni.
