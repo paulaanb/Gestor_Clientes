@@ -1,4 +1,5 @@
 import csv
+from xml.dom.pulldom import END_DOCUMENT
 import config
 
 
@@ -17,22 +18,23 @@ class Cliente: #Coge los datos y los devuelve
 
 class Clientes:
 
-    lista = []
+    lista = [] #creamos la lista y cargamos los clientes en memoria
     with open(config.DATABASE_PATH, newline='\n') as fichero:
         reader = csv.reader(fichero, delimiter=';')
         for dni, nombre, apellido in reader:
             cliente = Cliente(dni, nombre, apellido)
             lista.append(cliente)
 
-    @staticmethod
-    def buscar(dni):
+    @staticmethod#a las funciones que llamemos mucho, para que solo nos guarde lo ultimo
+    def busca(dni):
         for cliente in Clientes.lista:
             if cliente.dni == dni:
-                return cliente
+                return cliente #nos lo devuelve si el dni aparece en la lista de registrados
+        
 
     @staticmethod
-    def crear(dni, nombre, apellido):
-        cliente = Cliente(dni, nombre, apellido)
+    def crear(dni, nombre, apellido): 
+        cliente = Cliente(dni, nombre, apellido)#llamamos a la clase cliente
         Clientes.lista.append(cliente)
         Clientes.guardar()
         return cliente
@@ -40,19 +42,20 @@ class Clientes:
     @staticmethod
     def modificar(dni, nombre, apellido):
         for indice, cliente in enumerate(Clientes.lista):
-            if cliente.dni == dni:
+            if cliente.dni == dni: #cliente nos recorre la lsta, pero esta se compone de objetos de las clases, por eso ponemos el .dni
                 Clientes.lista[indice].nombre = nombre
                 Clientes.lista[indice].apellido = apellido
                 Clientes.guardar()
                 return Clientes.lista[indice]
 
     @staticmethod
-    def borrar(dni):
+    def borrador(dni):
         for indice, cliente in enumerate(Clientes.lista):
             if cliente.dni == dni:
                 cliente = Clientes.lista.pop(indice)
-                Clientes.guardar()
+                cliente.guardar()
                 return cliente
+        
 
     @staticmethod
     def guardar():
