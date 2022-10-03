@@ -2,7 +2,7 @@ import csv
 import config
 
 
-class Cliente:
+class Cliente: #Coge los datos y los devuelve
     def __init__(self, dni, nombre, apellido):
         self.dni = dni
         self.nombre = nombre
